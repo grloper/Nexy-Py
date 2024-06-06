@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
-# list of dots, in the following format: [x, y, x, y, x, y,...]
-first = (
+# coordinates for the body and head of the animal
+body_coordinates = (
     146, 399, 163, 403, 170, 393, 169, 391, 166, 386, 170, 381, 170, 371, 170,
     355, 169, 346, 167, 335, 170, 329, 170, 320, 170, 310, 171, 301, 173, 290,
     178, 289, 182, 287, 188, 286, 190, 286, 192, 291, 194, 296, 195, 305, 194,
@@ -33,7 +33,7 @@ first = (
     136, 266, 139, 276, 143, 290, 148, 310, 151, 332, 155, 348, 156, 353, 153,
     366, 149, 379, 147, 394, 146, 399
 )
-second = (
+head_coordinates = (
     156, 141, 165, 135, 169, 131, 176, 130, 187, 134, 191, 140, 191, 146, 186,
     150, 179, 155, 175, 157, 168, 157, 163, 157, 159, 157, 158, 164, 159, 175,
     159, 181, 157, 191, 154, 197, 153, 205, 153, 210, 152, 212, 147, 215, 146,
@@ -44,27 +44,35 @@ second = (
     128, 156, 134, 157, 136, 156, 136
 )
 
-def main():
-    # initialize x and y lists
-    x = first[0::2] 
-    x2 = second[0::2]
-    y = first[1::2]  
-    y2 = second[1::2]
+def plot_animal():
+    # Extract x and y coordinates for body
+    body_x = body_coordinates[0::2]
+    body_y = body_coordinates[1::2]
 
+    # Extract x and y coordinates for head
+    head_x = head_coordinates[0::2]
+    head_y = head_coordinates[1::2]
 
+    # Set the title for the plot
+    plt.title("Animal Representation")
 
-    # title of the plot
-    plt.title("First Animal")
-    # invert the y axis
+    # Invert the y-axis
     plt.gca().invert_yaxis()
 
-    # plotting scatter and pyplot 
-    plt.scatter(x, y)
-    plt.plot(x, y)
-    plt.scatter(x2, y2)
-    plt.plot(x2, y2)
-    # display the plot
+    # Plotting the body and head with different colors
+    plt.plot(body_x, body_y, color='grey')
+    plt.plot(head_x, head_y, color='maroon')
+
+    # Filling the body and head shapes with colors
+    plt.fill(body_x, body_y, color='grey')
+    plt.fill(head_x, head_y, color='saddlebrown')
+
+    # Adding eyes as scatter points
+    plt.scatter(150, 150, color='black')
+    plt.scatter(123, 150, color='black')
+
+    # Display the final plot
     plt.show()
 
 if __name__ == "__main__":
-    main()
+    plot_animal()
