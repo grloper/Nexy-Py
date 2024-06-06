@@ -46,8 +46,10 @@ second = (
 
 def main():
     # initialize x and y lists
-    x = first[0::2] + second[0::2]
-    y = first[1::2] + second[1::2]
+    x = first[0::2] 
+    x2 = second[0::2]
+    y = first[1::2]  
+    y2 = second[1::2]
 
 
 
@@ -59,6 +61,8 @@ def main():
     # plotting scatter and pyplot 
     plt.scatter(x, y)
     plt.plot(x, y)
+    plt.scatter(x2, y2)
+    plt.plot(x2, y2)
     # display the plot
     plt.show()
 
